@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_inicio.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.btn_login
 
 class InicioFragment: Fragment() {
 
@@ -25,6 +27,9 @@ class InicioFragment: Fragment() {
             startActivity(Intent(requireContext(), LoginActivity::class.java))
         }
 
+        btn_cadastrar.setOnClickListener {
+            startActivity(Intent(requireContext(), CadastroActivity::class.java))
+        }
     }
 
     companion object{
