@@ -18,7 +18,7 @@ class InicioActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.inicio, fragment)
+            .replace(R.id.inicio, fragment, InicioFragment.TAG_INICIO)
             .commit()
     }
 }

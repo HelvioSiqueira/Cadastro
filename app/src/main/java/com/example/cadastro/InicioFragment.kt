@@ -22,7 +22,7 @@ class InicioFragment: Fragment() {
 
     companion object{
 
-        private val TAG_INICIO = "tagInicio"
+        const val TAG_INICIO = "tagInicio"
 
         fun newInstance() = InicioFragment()
     }
