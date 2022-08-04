@@ -1,8 +1,9 @@
 package com.example.cadastro
 
-interface CadastarView {
+interface CadastrarView {
     fun cadastrarPessoa() : Cadastro
     fun errorInvalidCadastro()
     fun errorSaveCadastro()
     fun testToast(cadastro: Cadastro)
+    fun showLogin()
 }

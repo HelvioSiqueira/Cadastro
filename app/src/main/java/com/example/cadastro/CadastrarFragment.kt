@@ -1,5 +1,6 @@
 package com.example.cadastro
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_cadastrar.*
 
-class CadastrarFragment: Fragment(), CadastarView {
+class CadastrarFragment: Fragment(), CadastrarView {
 
     private val presenter = CadastrarPresenter(this, MemoryRepository)
 
@@ -49,6 +50,10 @@ class CadastrarFragment: Fragment(), CadastarView {
 
     override fun testToast(cadastro: Cadastro){
         Toast.makeText(requireContext(), "${cadastro.nome}| ${cadastro.email} | ${cadastro.senha}", Toast.LENGTH_LONG).show()
+    }
+
+    override fun showLogin() {
+        LoginActivity.open(requireContext())
     }
 
     companion object{

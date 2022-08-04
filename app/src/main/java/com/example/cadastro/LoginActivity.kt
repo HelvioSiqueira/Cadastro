@@ -1,5 +1,7 @@
 package com.example.cadastro
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -18,5 +20,11 @@ class LoginActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.inicio, fragment, LoginFragment.TAG_LOGIN)
             .commit()
+    }
+
+    companion object{
+        fun open(context: Context){
+            context.startActivity(Intent(context, LoginActivity::class.java))
+        }
     }
 }

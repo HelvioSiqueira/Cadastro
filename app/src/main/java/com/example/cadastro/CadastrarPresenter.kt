@@ -3,7 +3,7 @@ package com.example.cadastro
 import java.lang.Exception
 
 class CadastrarPresenter(
-    private var view: CadastarView,
+    private var view: CadastrarView,
     private var repository: CadastroRepository
 ) {
 
@@ -16,6 +16,7 @@ class CadastrarPresenter(
         if(validator.validade(cadastro)){
             try {
                 repository.save(cadastro)
+                view.showLogin()
                 view.testToast(cadastro)
             } catch (e: Exception){
                 view.errorSaveCadastro()
