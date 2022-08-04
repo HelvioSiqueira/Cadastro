@@ -1,4 +1,6 @@
-package com.example.cadastro
+package com.example.cadastro.cadastrar
+
+import com.example.cadastro.model.Cadastro
 
 class CadastroValidator {
     fun validade(info: Cadastro) = with(info){

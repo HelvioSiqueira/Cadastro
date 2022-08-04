@@ -1,4 +1,6 @@
-package com.example.cadastro
+package com.example.cadastro.repository
+
+import com.example.cadastro.model.Cadastro
 
 interface CadastroRepository {
     fun save(cadastro: Cadastro)

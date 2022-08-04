@@ -1,7 +1,8 @@
-package com.example.cadastro
+package com.example.cadastro.cadastrar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.cadastro.R
 
 class CadastrarActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

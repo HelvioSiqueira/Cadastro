@@ -1,4 +1,6 @@
-package com.example.cadastro
+package com.example.cadastro.repository
+
+import com.example.cadastro.model.Cadastro
 
 object MemoryRepository: CadastroRepository {
     private var nextId = 1L

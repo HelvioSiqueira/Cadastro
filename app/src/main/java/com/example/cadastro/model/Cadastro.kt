@@ -1,4 +1,4 @@
-package com.example.cadastro
+package com.example.cadastro.model
 
 data class Cadastro(
     var id: Long = 0,

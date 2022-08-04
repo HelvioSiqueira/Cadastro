@@ -1,10 +1,11 @@
-package com.example.cadastro
+package com.example.cadastro.login
 
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.cadastro.R
 
 class LoginFragment: Fragment() {
     override fun onCreateView(

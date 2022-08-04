@@ -1,5 +1,6 @@
-package com.example.cadastro
+package com.example.cadastro.cadastrar
 
+import com.example.cadastro.repository.CadastroRepository
 import java.lang.Exception
 
 class CadastrarPresenter(
@@ -16,7 +17,7 @@ class CadastrarPresenter(
         if(validator.validade(cadastro)){
             try {
                 repository.save(cadastro)
-                view.showLogin()
+                view.showLoginActivity()
                 view.testToast(cadastro)
             } catch (e: Exception){
                 view.errorSaveCadastro()

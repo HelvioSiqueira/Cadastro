@@ -1,12 +1,15 @@
-package com.example.cadastro
+package com.example.cadastro.cadastrar
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.cadastro.*
+import com.example.cadastro.login.LoginActivity
+import com.example.cadastro.model.Cadastro
+import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_cadastrar.*
 
 class CadastrarFragment: Fragment(), CadastrarView {
@@ -52,8 +55,16 @@ class CadastrarFragment: Fragment(), CadastrarView {
         Toast.makeText(requireContext(), "${cadastro.nome}| ${cadastro.email} | ${cadastro.senha}", Toast.LENGTH_LONG).show()
     }
 
-    override fun showLogin() {
+    override fun showLoginActivity() {
         LoginActivity.open(requireContext())
+    }
+
+    override fun checaExiste() {
+        TODO("Not yet implemented")
+    }
+
+    override fun errorExiste() {
+        TODO("Not yet implemented")
     }
 
     companion object{
