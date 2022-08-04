@@ -3,7 +3,7 @@ package com.example.cadastro
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class CadastroActivity : AppCompatActivity() {
+class CadastrarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
@@ -12,11 +12,11 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun showCadastroFragment(){
-        val fragment = CadastroFragment.newInstance()
+        val fragment = CadastrarFragment.newInstance()
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.inicio, fragment, CadastroFragment.TAG_CADASTRO)
+            .replace(R.id.inicio, fragment, CadastrarFragment.TAG_CADASTRO)
             .commit()
     }
 }

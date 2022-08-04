@@ -11,4 +11,7 @@
     <string name="hint_edt_email">Email</string>
     <string name="hit_edt_senha">Senha</string>
 
+    <string name="error_invalid_cadastro">Cadastro invalido</string>
+    <string name="error_save_cadastro">Não foi possivel cadastrar</string>
+
 </resources>
