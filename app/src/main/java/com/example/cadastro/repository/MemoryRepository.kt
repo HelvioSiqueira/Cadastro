@@ -18,8 +18,8 @@ object MemoryRepository: CadastroRepository {
         TODO("Not yet implemented")
     }
 
-    override fun cadastroById(id: Long, callback: (Cadastro?) -> Unit) {
-        callback(cadastroList.find { it.id == id })
+    override fun cadastroByEmail(email: String, callback: (Cadastro?) -> Unit) {
+        callback(cadastroList.find { it.email == email })
     }
 
     override fun search(term: String, callback: (List<Cadastro>) -> Unit) {
