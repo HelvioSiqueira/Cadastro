@@ -1,7 +1,6 @@
-package com.example.cadastro
+package com.example.cadastro.lista
 
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import com.example.cadastro.model.Cadastro

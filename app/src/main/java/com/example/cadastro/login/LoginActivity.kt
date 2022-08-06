@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.cadastro.R
+import com.example.cadastro.cadastrar.CadastrarFragment
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
             .replace(R.id.inicio, fragment, LoginFragment.TAG_LOGIN)
             .commit()
     }
+
 
     companion object{
         fun open(context: Context){

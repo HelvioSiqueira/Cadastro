@@ -1,10 +1,11 @@
-package com.example.cadastro
+package com.example.cadastro.lista
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cadastro.R
 
 class CadastroListActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

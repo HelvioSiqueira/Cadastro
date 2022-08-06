@@ -1,4 +1,4 @@
-package com.example.cadastro
+package com.example.cadastro.lista
 
 import com.example.cadastro.repository.CadastroRepository
 

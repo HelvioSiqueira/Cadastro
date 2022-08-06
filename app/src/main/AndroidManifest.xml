@@ -17,7 +17,7 @@
             android:name=".cadastrar.CadastrarActivity"
             android:exported="false" />
         <activity
-            android:name=".CadastroListActivity"
+            android:name=".lista.CadastroListActivity"
             android:exported="false"/>
         <activity
             android:name=".login.LoginActivity"

@@ -1,6 +1,7 @@
 package com.example.cadastro.cadastrar
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,12 @@ class CadastrarFragment: Fragment(), CadastrarView {
         cadastro.nome = edtNome.text.toString()
         cadastro.email = edtEmail.text.toString()
         cadastro.senha = edtSenha.text.toString()
+
+        edtNome.text?.clear()
+        edtEmail.text?.clear()
+        edtSenha.text?.clear()
+
+        edtNome.requestFocus()
 
         return cadastro
     }
