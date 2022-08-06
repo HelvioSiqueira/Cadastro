@@ -23,6 +23,11 @@ object MemoryRepository: CadastroRepository {
     }
 
     override fun search(term: String, callback: (List<Cadastro>) -> Unit) {
-        TODO("Not yet implemented")
+        callback(
+            if(term.isEmpty()) cadastroList
+            else cadastroList.filter {
+                it.email.uppercase().contains(term.uppercase())
+            }
+        )
     }
 }

@@ -3,15 +3,13 @@ package com.example.cadastro.login
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.cadastro.CadastroListActivity
 import com.example.cadastro.InicioActivity
-import com.example.cadastro.InicioFragment
 import com.example.cadastro.R
-import com.example.cadastro.repository.CadastroRepository
 import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -42,15 +40,13 @@ class LoginFragment: Fragment(), LoginView {
         login.login = edtEmail.text.toString()
         login.senha = edtSenha.text.toString()
 
-        Log.i("HSV", "1 ${login.login}|${login.senha}")
-
         return login
     }
 
     override fun aprovarAutenticacao() {
         Toast.makeText(requireContext(), "Logado com sucesso", Toast.LENGTH_LONG).show()
 
-        startActivity(Intent(requireContext(), InicioActivity::class.java))
+        CadastroListActivity.open(requireContext())
     }
 
     override fun emailInexistente() {
