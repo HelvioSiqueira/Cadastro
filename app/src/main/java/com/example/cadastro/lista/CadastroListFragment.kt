@@ -1,6 +1,7 @@
 package com.example.cadastro.lista
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import com.example.cadastro.model.Cadastro
@@ -10,8 +11,8 @@ class CadastroListFragment: ListFragment(), CadastroListView {
 
     val presenter = CadastroListPresenter(this, MemoryRepository)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         presenter.searchCadastros("")
     }
 
