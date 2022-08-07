@@ -40,13 +40,17 @@ class CadastrarFragment: Fragment(), CadastrarView {
         cadastro.email = edtEmail.text.toString()
         cadastro.senha = edtSenha.text.toString()
 
+        return cadastro
+    }
+
+    override fun onStop() {
+        super.onStop()
+
         edtNome.text?.clear()
         edtEmail.text?.clear()
         edtSenha.text?.clear()
 
         edtNome.requestFocus()
-
-        return cadastro
     }
 
     override fun errorInvalidCadastro() {
