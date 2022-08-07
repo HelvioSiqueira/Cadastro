@@ -11,10 +11,12 @@ import com.example.cadastro.login.LoginActivity
 import com.example.cadastro.model.Cadastro
 import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_cadastrar.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class CadastrarFragment: Fragment(), CadastrarView {
 
-    private val presenter = CadastrarPresenter(this, MemoryRepository)
+    private val presenter: CadastrarPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

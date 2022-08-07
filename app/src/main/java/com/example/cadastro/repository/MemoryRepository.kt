@@ -6,11 +6,6 @@ object MemoryRepository: CadastroRepository {
     private var nextId = 1L
     private var cadastroList = mutableListOf<Cadastro>()
 
-    init {
-        save(Cadastro(0, "Helvio", "helvio@gmail.com", "1234567890"))
-        save(Cadastro(0, "Ana", "ana@gmail.com", "0987654321"))
-    }
-
     override fun save(cadastro: Cadastro) {
 
         if (cadastro.id == 0L){

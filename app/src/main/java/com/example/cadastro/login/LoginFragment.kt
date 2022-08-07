@@ -10,10 +10,12 @@ import com.example.cadastro.lista.CadastroListActivity
 import com.example.cadastro.R
 import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class LoginFragment: Fragment(), LoginView {
 
-    private val presenter = LoginPresenter(this, MemoryRepository)
+    private val presenter: LoginPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

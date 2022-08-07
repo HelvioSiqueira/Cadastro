@@ -6,10 +6,12 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import com.example.cadastro.model.Cadastro
 import com.example.cadastro.repository.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class CadastroListFragment: ListFragment(), CadastroListView {
 
-    val presenter = CadastroListPresenter(this, MemoryRepository)
+    val presenter: CadastroListPresenter by inject { parametersOf(this) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
