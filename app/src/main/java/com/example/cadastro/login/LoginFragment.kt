@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.example.cadastro.lista.CadastroListActivity
 import com.example.cadastro.R
-import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginFragment: Fragment(), LoginView {
+class LoginFragment : Fragment() {
 
-    private val presenter: LoginPresenter by inject { parametersOf(this) }
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,39 +30,52 @@ class LoginFragment: Fragment(), LoginView {
         super.onViewCreated(view, savedInstanceState)
 
         btn_login.setOnClickListener {
-            presenter.autenticar()
+            autenticar()
         }
     }
 
-    override fun autenticar(): Login {
+    fun autenticar() {
 
         val login = Login()
 
         login.login = edtEmail.text.toString()
         login.senha = edtSenha.text.toString()
 
-        return login
+        try {
+            if (viewModel.autenticar(login)) {
+                aprovarAutenticacao()
+            } else {
+                invalidarAutenticacao()
+                emailInexistente()
+            }
+        } catch (e: Exception) {
+            erroAutenticacao()
+        }
     }
 
-    override fun aprovarAutenticacao() {
+    fun aprovarAutenticacao() {
         Toast.makeText(requireContext(), "Logado com sucesso", Toast.LENGTH_LONG).show()
 
         CadastroListActivity.open(requireContext())
     }
 
-    override fun emailInexistente() {
-        Toast.makeText(requireContext(), "Email Inexistente", Toast.LENGTH_LONG).show()
+    fun emailInexistente() {
+        viewModel.getEmailExite().observe(viewLifecycleOwner, Observer { exite ->
+            if (!exite) {
+                Toast.makeText(requireContext(), "Email Inexistente", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
-    override fun invalidarAutenticacao() {
+    fun invalidarAutenticacao() {
         Toast.makeText(requireContext(), "Senha errada", Toast.LENGTH_LONG).show()
     }
 
-    override fun erroAutenticacao() {
+    fun erroAutenticacao() {
         Toast.makeText(requireContext(), "Não foi possivel logar", Toast.LENGTH_LONG).show()
     }
 
-    companion object{
+    companion object {
         const val TAG_LOGIN = "tagLogin"
 
         fun newInstance() = LoginFragment()

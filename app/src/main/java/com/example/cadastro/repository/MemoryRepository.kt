@@ -2,6 +2,9 @@ package com.example.cadastro.repository
 
 import com.example.cadastro.model.Cadastro
 
+/*Esse object pode ser excluido já que tod0 esse processo é feito pelo SQLiteRepository
+* é inteligado pelo Koin com o presenter e as views*/
+
 object MemoryRepository: CadastroRepository {
     private var nextId = 1L
     private var cadastroList = mutableListOf<Cadastro>()

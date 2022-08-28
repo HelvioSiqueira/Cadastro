@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import com.example.cadastro.model.Cadastro
-import com.example.cadastro.repository.MemoryRepository
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 

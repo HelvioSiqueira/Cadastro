@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import com.example.cadastro.*
 import com.example.cadastro.login.LoginActivity
 import com.example.cadastro.model.Cadastro
-import com.example.cadastro.repository.MemoryRepository
 import kotlinx.android.synthetic.main.fragment_cadastrar.*
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CadastrarFragment: Fragment(), CadastrarView {
+class CadastrarFragment : Fragment() {
 
-    private val presenter: CadastrarPresenter by inject { parametersOf(this) }
+    private val viewModel: CadastrarViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,11 +28,11 @@ class CadastrarFragment: Fragment(), CadastrarView {
         super.onViewCreated(view, savedInstanceState)
 
         btn_cadastrar.setOnClickListener {
-            presenter.cadastrar()
+            cadastrarPessoa()
         }
     }
 
-    override fun cadastrarPessoa(): Cadastro {
+    private fun cadastrarPessoa() {
         val cadastro = Cadastro()
 
         cadastro.id = 0L
@@ -42,7 +40,18 @@ class CadastrarFragment: Fragment(), CadastrarView {
         cadastro.email = edtEmail.text.toString()
         cadastro.senha = edtSenha.text.toString()
 
-        return cadastro
+
+        try {
+            if (viewModel.cadastrar(cadastro)) {
+                showLoginActivity()
+                testToast(cadastro)
+            } else {
+                errorInvalidCadastro()
+            }
+        }catch (e: Exception){
+            errorSaveCadastro()
+        }
+
     }
 
     override fun onStop() {
@@ -55,31 +64,35 @@ class CadastrarFragment: Fragment(), CadastrarView {
         edtNome.requestFocus()
     }
 
-    override fun errorInvalidCadastro() {
+    fun errorInvalidCadastro() {
         Toast.makeText(requireContext(), R.string.error_invalid_cadastro, Toast.LENGTH_LONG).show()
     }
 
-    override fun errorSaveCadastro() {
+    fun errorSaveCadastro() {
         Toast.makeText(requireContext(), R.string.error_save_cadastro, Toast.LENGTH_LONG).show()
     }
 
-    override fun testToast(cadastro: Cadastro){
-        Toast.makeText(requireContext(), "${cadastro.nome}| ${cadastro.email} | ${cadastro.senha}", Toast.LENGTH_LONG).show()
+    fun testToast(cadastro: Cadastro) {
+        Toast.makeText(
+            requireContext(),
+            "${cadastro.nome}| ${cadastro.email} | ${cadastro.senha}",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
-    override fun showLoginActivity() {
+    fun showLoginActivity() {
         LoginActivity.open(requireContext())
     }
 
-    override fun checaExiste() {
+    fun checaExiste() {
         TODO("Not yet implemented")
     }
 
-    override fun errorExiste() {
+    fun errorExiste() {
         TODO("Not yet implemented")
     }
 
-    companion object{
+    companion object {
         const val TAG_CADASTRO = "tagCadastro"
 
         fun newInstance() = CadastrarFragment()

@@ -3,7 +3,7 @@ package com.example.cadastro.cadastrar
 import com.example.cadastro.model.Cadastro
 
 class CadastroValidator {
-    fun validade(info: Cadastro) = with(info){
+    fun validate(info: Cadastro) = with(info){
         checkName(nome) && checkEmail(email) && checkSenha(senha)
     }
 
