@@ -1,10 +1,7 @@
 package com.example.cadastro.di
 
 import com.example.cadastro.cadastrar.CadastrarViewModel
-import com.example.cadastro.lista.CadastroListPresenter
-import com.example.cadastro.lista.CadastroListView
-import com.example.cadastro.login.LoginPresenter
-import com.example.cadastro.login.LoginView
+import com.example.cadastro.lista.CadastroListViewModel
 import com.example.cadastro.login.LoginViewModel
 import com.example.cadastro.repository.CadastroRepository
 import com.example.cadastro.sqlite.SQLiteRepository
@@ -26,7 +23,7 @@ val androidModule = module {
         LoginViewModel(repository = get())
     }
 
-    factory {(view: CadastroListView)->
-        CadastroListPresenter(view, repository = get())
+    viewModel{
+        CadastroListViewModel(repository = get())
     }
 }

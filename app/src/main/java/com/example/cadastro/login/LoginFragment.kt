@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
-
     private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
@@ -32,8 +31,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun autenticar() {
-
+    private fun autenticar() {
         val login = Login()
 
         login.login = edtEmail.text.toString()

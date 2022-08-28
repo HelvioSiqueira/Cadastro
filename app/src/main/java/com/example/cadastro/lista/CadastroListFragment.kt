@@ -4,21 +4,27 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
+import androidx.lifecycle.Observer
 import com.example.cadastro.model.Cadastro
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CadastroListFragment: ListFragment(), CadastroListView {
+class CadastroListFragment: ListFragment() {
 
-    val presenter: CadastroListPresenter by inject { parametersOf(this) }
+    val viewModel: CadastroListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.searchCadastros("")
+        viewModel.searchCadastros("")
+
+        viewModel.getListaCadastros().observe(viewLifecycleOwner, Observer { listaCadastros->
+            showCadastros(listaCadastros)
+        })
     }
 
-    override fun showCadastros(cadastro: List<Cadastro>) {
-        val adapter = ArrayAdapter<Cadastro>(requireContext(), android.R.layout.simple_list_item_1, cadastro)
+     fun showCadastros(cadastros: List<Cadastro>) {
+        val adapter = ArrayAdapter<Cadastro>(requireContext(), android.R.layout.simple_list_item_1, cadastros)
 
         listAdapter = adapter
     }
