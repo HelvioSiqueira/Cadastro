@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CadastroListFragment: ListFragment() {
 
-    val viewModel: CadastroListViewModel by viewModel()
+    private val viewModel: CadastroListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

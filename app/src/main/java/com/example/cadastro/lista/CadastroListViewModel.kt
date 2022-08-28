@@ -10,10 +10,8 @@ class CadastroListViewModel(private val repository: CadastroRepository): ViewMod
 
     private val listaCadastros = MutableLiveData<List<Cadastro>>()
 
-    fun searchCadastros(term: String){
-        repository.search(term){ list ->
-            listaCadastros.value = list
-        }
+    fun searchCadastros(term: String): LiveData<List<Cadastro>> {
+        return repository.search(term)
     }
 
     fun getListaCadastros(): LiveData<List<Cadastro>> = listaCadastros

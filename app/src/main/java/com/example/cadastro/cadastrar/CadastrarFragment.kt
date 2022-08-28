@@ -41,16 +41,13 @@ class CadastrarFragment : Fragment() {
         cadastro.senha = edtSenha.text.toString()
 
 
-        try {
             if (viewModel.cadastrar(cadastro)) {
                 showLoginActivity()
                 testToast(cadastro)
             } else {
                 errorInvalidCadastro()
             }
-        }catch (e: Exception){
-            errorSaveCadastro()
-        }
+
 
     }
 

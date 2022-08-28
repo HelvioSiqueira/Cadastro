@@ -12,14 +12,15 @@ class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
     private var autenticou = false
 
     fun autenticar(login: Login): Boolean {
-        repository.cadastroByEmail(login.login) { cadastro ->
-            if (cadastro != null) {
-                if (login.validarSenha(cadastro.senha)) {
-                    autenticou = true
-                }
-            } else {
-                emailExiste.value = false
+
+        val loginEncontrado = repository.cadastroByEmail(login.login)
+
+        if(loginEncontrado.value != null){
+            if(login.validarSenha(login.senha)){
+                autenticou = true
             }
+        } else {
+            emailExiste.value = false
         }
 
         return autenticou
