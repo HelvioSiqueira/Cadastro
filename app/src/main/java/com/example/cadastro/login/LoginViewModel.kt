@@ -1,9 +1,9 @@
 package com.example.cadastro.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.cadastro.repository.CadastroRepository
+import com.example.cadastro.model.Cadastro
 
 class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
 
@@ -13,10 +13,10 @@ class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
 
     fun autenticar(login: Login): Boolean {
 
-        val loginEncontrado = repository.cadastroByEmail(login.login)
+        Log.d("HSV", login.login)
 
-        if(loginEncontrado.value != null){
-            if(login.validarSenha(login.senha)){
+        if (login != null) {
+            if (login.validarSenha(login.senha)) {
                 autenticou = true
             }
         } else {
@@ -24,6 +24,10 @@ class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
         }
 
         return autenticou
+    }
+
+    fun getEmail(login: String): LiveData<Cadastro> {
+        return repository.cadastroByEmail(login)
     }
 
     fun getEmailExite(): LiveData<Boolean> = emailExiste

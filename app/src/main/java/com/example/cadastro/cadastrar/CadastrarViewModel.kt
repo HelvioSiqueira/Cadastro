@@ -11,8 +11,6 @@ class CadastrarViewModel(private val repository: CadastroRepository) : ViewModel
 
     fun cadastrar(cadastro: Cadastro): Boolean {
         return validator.validate(cadastro).also { validated ->
-
-            Log.d("HSV", "${cadastro.id}, ${cadastro.nome}, ${cadastro.email}, ${cadastro.senha}")
             if (validated) repository.save(cadastro)
         }
     }

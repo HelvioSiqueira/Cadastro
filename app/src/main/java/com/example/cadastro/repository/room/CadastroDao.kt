@@ -17,9 +17,9 @@ interface CadastroDao {
     @Delete
     fun remove(){}
 
-    @Query("SELECT * FROM $TABLE_CADASTRO WHERE $COLUMN_NAME LIKE :query ORDER BY $COLUMN_NAME")
+    @Query("""SELECT * FROM $TABLE_CADASTRO WHERE $COLUMN_NAME LIKE :query ORDER BY $COLUMN_NAME""")
     fun search(query: String): LiveData<List<Cadastro>>
 
-    @Query("SELECT * FROM $TABLE_CADASTRO WHERE $COLUMN_EMAIL = :email")
+    @Query("""SELECT * FROM $TABLE_CADASTRO WHERE $COLUMN_EMAIL = :email""")
     fun cadastroByEmail(email: String): LiveData<Cadastro>
 }

@@ -3,7 +3,6 @@ package com.example.cadastro.di
 import com.example.cadastro.cadastrar.CadastrarViewModel
 import com.example.cadastro.lista.CadastroListViewModel
 import com.example.cadastro.login.LoginViewModel
-import com.example.cadastro.model.Cadastro
 import com.example.cadastro.repository.CadastroRepository
 import com.example.cadastro.repository.room.CadastroDatabase
 import com.example.cadastro.repository.room.RoomRepository
@@ -17,15 +16,15 @@ val androidModule = module {
         RoomRepository(CadastroDatabase.getDatabase(context = get())) as CadastroRepository
     }
 
-    factory{
+    viewModel{
         CadastrarViewModel(repository = get())
     }
 
-    factory{
+    viewModel{
         LoginViewModel(repository = get())
     }
 
-    factory{
+    viewModel{
         CadastroListViewModel(repository = get())
     }
 }
