@@ -1,4 +1,4 @@
-package com.example.cadastro.sqlite
+package com.example.cadastro.repository.room
 
 const val DATABASE_NAME = "dbCadastro"
 const val DATABASE_VERSION = 1

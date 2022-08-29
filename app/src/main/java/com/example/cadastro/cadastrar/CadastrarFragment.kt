@@ -35,11 +35,10 @@ class CadastrarFragment : Fragment() {
     private fun cadastrarPessoa() {
         val cadastro = Cadastro()
 
-        cadastro.id = 0L
+        cadastro.id = 0
         cadastro.nome = edtNome.text.toString()
         cadastro.email = edtEmail.text.toString()
         cadastro.senha = edtSenha.text.toString()
-
 
             if (viewModel.cadastrar(cadastro)) {
                 showLoginActivity()
@@ -47,8 +46,6 @@ class CadastrarFragment : Fragment() {
             } else {
                 errorInvalidCadastro()
             }
-
-
     }
 
     override fun onStop() {

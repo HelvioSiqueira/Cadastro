@@ -17,15 +17,15 @@ val androidModule = module {
         RoomRepository(CadastroDatabase.getDatabase(context = get())) as CadastroRepository
     }
 
-    viewModel{
+    factory{
         CadastrarViewModel(repository = get())
     }
 
-    viewModel{
+    factory{
         LoginViewModel(repository = get())
     }
 
-    viewModel{
+    factory{
         CadastroListViewModel(repository = get())
     }
 }

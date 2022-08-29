@@ -5,14 +5,10 @@ import androidx.room.Dao
 import androidx.room.Insert
 import com.example.cadastro.model.Cadastro
 import androidx.room.*
-import com.example.cadastro.sqlite.COLUMN_EMAIL
-import com.example.cadastro.sqlite.COLUMN_NAME
-import com.example.cadastro.sqlite.TABLE_CADASTRO
 
 @Dao
 interface CadastroDao {
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(cadastro: Cadastro): Long
 
     @Update
