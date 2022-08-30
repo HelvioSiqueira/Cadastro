@@ -22,7 +22,7 @@ class RoomRepository(database: CadastroDatabase): CadastroRepository {
         TODO("Not yet implemented")
     }
 
-    override fun cadastroByEmail(email: String): LiveData<Cadastro> {
+    override fun cadastroByEmail(email: String): Cadastro {
         Log.d("HSV", "String recebida no viewmodel: $email")
         return cadastroDao.cadastroByEmail(email)
     }

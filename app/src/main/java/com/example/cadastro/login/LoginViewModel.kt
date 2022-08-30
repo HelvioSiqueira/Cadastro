@@ -15,8 +15,10 @@ class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
 
         Log.d("HSV", login.login)
 
-        if (login != null) {
-            if (login.validarSenha(login.senha)) {
+        val emailEncontrado = repository.cadastroByEmail(login.login)
+
+        if (emailEncontrado != null) {
+            if (login.validarSenha(emailEncontrado.senha)) {
                 autenticou = true
             }
         } else {
@@ -24,10 +26,6 @@ class LoginViewModel(private val repository: CadastroRepository) : ViewModel() {
         }
 
         return autenticou
-    }
-
-    fun getEmail(login: String): LiveData<Cadastro> {
-        return repository.cadastroByEmail(login)
     }
 
     fun getEmailExite(): LiveData<Boolean> = emailExiste

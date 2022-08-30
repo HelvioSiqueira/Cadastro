@@ -6,6 +6,6 @@ import com.example.cadastro.model.Cadastro
 interface CadastroRepository {
     fun save(cadastro: Cadastro)
     fun remove(cadastro: Cadastro)
-    fun cadastroByEmail(email: String): LiveData<Cadastro>
+    fun cadastroByEmail(email: String): Cadastro
     fun search(term: String): LiveData<List<Cadastro>>
 }
