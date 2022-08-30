@@ -1,6 +1,7 @@
 package com.example.cadastro.lista
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
@@ -14,17 +15,29 @@ class CadastroListFragment: ListFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.searchCadastros("")
 
         viewModel.getListaCadastros().observe(viewLifecycleOwner, Observer { listaCadastros->
-            showCadastros(listaCadastros)
+
+            Log.d("HSV", "Lista de cadastros: ${listaCadastros.joinToString(separator = ",")}")
+
+            if(listaCadastros != null){
+                showCadastros(listaCadastros)
+            }
         })
+
+        if(viewModel.getListaCadastros().value == null){
+            search()
+        }
     }
 
      fun showCadastros(cadastros: List<Cadastro>) {
         val adapter = ArrayAdapter<Cadastro>(requireContext(), android.R.layout.simple_list_item_1, cadastros)
 
         listAdapter = adapter
+    }
+
+    fun search(text: String = ""){
+        viewModel.search(text)
     }
 
     companion object{
