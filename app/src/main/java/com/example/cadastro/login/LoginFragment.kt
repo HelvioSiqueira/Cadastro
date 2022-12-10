@@ -28,7 +28,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_login.setOnClickListener {
-            autenticar()
+            //texto aleatorio
         }
     }
     
@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
                 aprovarAutenticacao()
             } else {
                 invalidarAutenticacao()
-                emailInexistente()
+                //sei lá
             }
         }catch (e: Exception){
             erroAutenticacao()
@@ -54,13 +54,13 @@ class LoginFragment : Fragment() {
     fun aprovarAutenticacao() {
         Toast.makeText(requireContext(), "Logado com sucesso", Toast.LENGTH_LONG).show()
 
-        CadastroListActivity.open(requireContext())
+        //texto qualquer
     }
 
     fun emailInexistente() {
         viewModel.getEmailExite().observe(viewLifecycleOwner, Observer { exite ->
             if (!exite) {
-                Toast.makeText(requireContext(), "Email Inexistente", Toast.LENGTH_LONG).show()
+                //Mais um texto comentado
             }
         })
     }
