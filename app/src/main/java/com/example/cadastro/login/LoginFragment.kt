@@ -31,25 +31,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun autenticar() {
-        val login = Login()
-
-        login.login = edtEmail.text.toString()
-        login.senha = edtSenha.text.toString()
-
-        try {
-            if(viewModel.autenticar(login)){
-                aprovarAutenticacao()
-            } else {
-                invalidarAutenticacao()
-                emailInexistente()
-            }
-        }catch (e: Exception){
-            erroAutenticacao()
-        }
-
-    }
-
     fun aprovarAutenticacao() {
         Toast.makeText(requireContext(), "Logado com sucesso", Toast.LENGTH_LONG).show()
 
