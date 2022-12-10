@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
 
         try {
             if(viewModel.autenticar(login)){
-                //aprovarAutenticacao()
+                aprovarAutenticacao()
             } else {
                 invalidarAutenticacao()
                 emailInexistente()
